@@ -67,8 +67,8 @@ const CSECore = () => {
                         key={t}
                         onClick={() => setTopic(t)}
                         className={`px-6 py-2.5 rounded-full font-bold transition-all border-2 ${topic === t
-                                ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg'
-                                : 'bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700 hover:border-indigo-400'
+                            ? 'bg-indigo-600 border-indigo-600 text-white shadow-lg'
+                            : 'bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700 hover:border-indigo-400'
                             }`}
                     >
                         {t}
@@ -102,7 +102,7 @@ const CSECore = () => {
                             <BookOpen className="h-6 w-6 text-indigo-500" />
                             <span>Quick MCQs</span>
                         </h2>
-                        {data.mcqs.map((q, idx) => (
+                        {data?.mcqs?.map((q, idx) => (
                             <div key={idx} className="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-xl group">
                                 <h4 className="font-bold mb-4 text-lg">Q{idx + 1}. {q.question}</h4>
                                 <div className="grid gap-2 mb-6">
@@ -139,7 +139,7 @@ const CSECore = () => {
                             <Clock className="h-6 w-6 text-orange-500" />
                             <span>Deep Dive Concepts</span>
                         </h2>
-                        {data.descriptive.map((q, idx) => (
+                        {data?.descriptive?.map((q, idx) => (
                             <div key={idx} className="bg-white dark:bg-gray-800 p-6 rounded-3xl border border-gray-100 dark:border-gray-700 shadow-xl group">
                                 <h4 className="font-bold mb-4 text-lg">Q{idx + 1}. {q.question}</h4>
                                 <button

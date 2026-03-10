@@ -28,7 +28,7 @@ function App() {
 
             <footer className="py-12 px-4 text-center text-gray-400 text-sm border-t border-gray-100 dark:border-gray-800 mt-20">
               <p>&copy; 2026 Campus Crack - AI Driven Placement Platform</p>
-              <p className="mt-2 text-xs">Developed with Google Gemini API</p>
+              <p className="mt-2 text-xs">Developed by ⚡Shetty</p>
             </footer>
           </div>
         </Router>

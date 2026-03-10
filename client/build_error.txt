@@ -1,0 +1,13 @@
+
+> client@0.0.0 build
+> vite build
+
+[36mvite v7.3.1 [32mbuilding client environment for production...[36m[39m
+transforming...
+[32mΓ£ô[39m 2211 modules transformed.
+rendering chunks...
+computing gzip size...
+[2mdist/[22m[32mindex.html                 [39m[1m[2m  0.42 kB[22m[1m[22m[2m Γöé gzip:   0.28 kB[22m
+[2mdist/[22m[35massets/index-D_jhHWAg.css  [39m[1m[2m 42.45 kB[22m[1m[22m[2m Γöé gzip:   7.46 kB[22m
+[2mdist/[22m[36massets/index-Cx_cJz_C.js   [39m[1m[2m436.60 kB[22m[1m[22m[2m Γöé gzip: 141.08 kB[22m
+[32mΓ£ô built in 8.51s[39m

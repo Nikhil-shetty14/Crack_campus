@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const dotenv = require('dotenv');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
 
@@ -190,17 +191,25 @@ app.post('/api/generate-aptitude', async (req, res) => {
 app.post('/api/generate-cse', async (req, res) => {
     const userKey = req.headers['x-api-key'];
     const { topic } = req.body;
-    const prompt = `Generate exactly 5 multiple choice technical questions on ${topic} for a campus placement interview.
+    const prompt = `Generate exactly 5 multiple choice technical questions and 3 deep dive descriptive theory questions on ${topic} for a campus placement interview.
     Keep output concise.
     Return strictly in this JSON format:
     {
         "mcqs": [
             {
                 "id": 1,
-                "question": "Concise question text",
+                "question": "Concise MCQ text",
                 "options": ["A) ...", "B) ...", "C) ...", "D) ..."],
                 "correctAnswer": "A",
                 "explanation": "Short 1-2 line explanation"
+            }
+        ],
+        "descriptive": [
+            {
+                "id": 1,
+                "question": "Concise theory question",
+                "answer": "Suggested high-quality answer",
+                "explanation": "Deep conceptual explanation"
             }
         ]
     }`;
@@ -261,6 +270,21 @@ app.get('/api/get-interview-question', async (req, res) => {
         res.status(500).json({ error: error.message || "Failed to fetch interview question." });
     }
 });
+
+// Serve Static Files for Production
+if (process.env.NODE_ENV === 'production') {
+    const clientPath = path.join(__dirname, '../client/dist');
+    app.use(express.static(clientPath));
+
+    // Handle React routing, return all requests to React app
+    app.get('(.*)', (req, res) => {
+        // If it's an API route that reached here, it's a 404
+        if (req.url.startsWith('/api')) {
+            return res.status(404).json({ error: 'Endpoint not found' });
+        }
+        res.sendFile(path.join(clientPath, 'index.html'));
+    });
+}
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
